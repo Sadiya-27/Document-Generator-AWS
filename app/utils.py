@@ -27,4 +27,3 @@ def multiply(a, b):
         int: Product
     """
     return a * b
-
