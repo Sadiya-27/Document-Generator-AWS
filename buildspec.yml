@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.11
+
+    commands:
+      - pip install -r requirements.txt
+
+  build:
+    commands:
+      - python -m sphinx.ext.apidoc -o docs app --force
+      - cd docs
+      - python -m sphinx -b html . _build/html
+
+  post_build:
+    commands:
+      - aws s3 cp _build/html s3://$DOC_BUCKET/ --recursive
+      - echo "Documentation deployed successfully"

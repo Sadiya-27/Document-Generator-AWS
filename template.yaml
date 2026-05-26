@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+
+Parameters:
+  DocumentationBucketName:
+    Type: String
+
+Resources:
+
+  DocumentationBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref DocumentationBucketName
+      WebsiteConfiguration:
+        IndexDocument: index.html
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+
+Outputs:
+  WebsiteURL:
+    Value: !GetAtt DocumentationBucket.WebsiteURL
