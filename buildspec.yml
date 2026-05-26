@@ -11,10 +11,10 @@ phases:
   build:
     commands:
       - python -m sphinx.ext.apidoc -o docs app --force
-      - cd docs
-      - python -m sphinx -b html . _build/html
+      - python -m sphinx -b html docs docs/_build/html
 
   post_build:
     commands:
-      - aws s3 cp _build/html s3://$DOC_BUCKET/ --recursive
-      - echo "Documentation deployed successfully"
+      - aws s3 rm s3://$DOC_BUCKET/ --recursive
+      - aws s3 cp docs/_build/html s3://$DOC_BUCKET/ --recursive
+      - echo "Deployment completed"

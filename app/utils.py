@@ -27,3 +27,9 @@ def multiply(a, b):
         int: Product
     """
     return a * b
+
+def divide(a, b):
+    """
+    Divides two numbers.
+    """
+    return a / b
