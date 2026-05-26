@@ -14,3 +14,16 @@ def add(a, b):
         int: Sum
     """
     return a + b
+
+def multiply(a, b):
+    """
+    Multiplies two numbers.
+
+    Args:
+        a (int): First number
+        b (int): Second number
+
+    Returns:
+        int: Product
+    """
+    return a * b
